@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<div class="game">
+		<h1 class="text-center">POINTS</h1>
+		<h1 class="points text-center">0</h1>
+		<div class="container">
+			
+			<div class="row">
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog w-75" src="jake.png" alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png" alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div style="height: 100px; width: 400px; background: purple; position: absolute; margin-left: 550px; margin-top: -600px; display: none " class="text-center win">
+		<h1>U win</h1>
+	</div>
+	<div style="height: 100px; width: 400px; background: purple; position: absolute; margin-left: 550px;  margin-top:-600px; display: none" class="text-center lose">
+		<h1>U lose</h1>
+	</div>
+
+	<script>
+		let win = document.querySelector('.win')
+		let lose = document.querySelector('.lose')
+		let points = document.querySelector('.points')
+		let score = 0
+		let jake = document.querySelectorAll('.jakethedog')
+		let iceking = document.querySelectorAll('.iceking')
+		let x = function(){
+			let rand = Math.random()*8
+			let round = Math.round(rand)	
+			jake[round].style.display = 'block'
+			let y = function(){
+				jake[round].style.display = 'none'			
+				}
+			setTimeout(y,1000)							
+			}	
+		let z = function(){
+			let rand2 = Math.random()*8
+			let round2 = Math.round(rand2)
+			iceking[round2].style.display = 'block'
+			let a = function(){
+				iceking[round2].style.display = 'none'
+			}	
+			setTimeout(a,2000)
+		}
+			
+		let intervalID=setInterval(x,1000)
+		let intervalID2=setInterval(z,2000)
+		for(let i = 0;i<8;i=i+1){
+			jake[i].onclick = function(){
+				score = score + 1
+				points.innerHTML = score
+				jake[i].style.display = 'none'
+			}
+		}
+		for(let i = 0;i<8;i=i+1){
+			iceking[i].onclick = function(){
+				score = score - 9
+				points.innerHTML = score
+				iceking[i].style.display = 'none'
+			}
+		}
+		let s = function(){
+			if(score>=1){
+				win.style.display = 'block'
+			}
+			else{
+				lose.style.display = 'block'
+			}
+			clearInterval(intervalID)
+			clearInterval(intervalID2)
+		}
+		setTimeout(s,10000)
+		
+	</script>
+</body>
+</html>
